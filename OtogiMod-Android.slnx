@@ -1,0 +1,5 @@
+<Solution>
+    <Project Path="src/OtogiMod/OtogiMod.csproj" />
+    <Project Path="tests/OtogiMod.Tests/OtogiMod.Tests.csproj" />
+    <Project Path="shared/Utility/src/Utility/Utility.csproj" />
+</Solution>

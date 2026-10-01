@@ -1,0 +1,30 @@
+# IDE state
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build and release output
+**/bin/
+**/obj/
+artifacts/
+.build-check/
+
+# Local packages and logs
+*.nupkg
+*.snupkg
+*.log
+
+# Local shared-source overrides and obsolete binary copies
+/SharedDependencies.local.props
+# Retired DLL-copy directory; shared libraries are built from source
+/dependencies/managed/
+# Local full game Interop export
+/dependencies/interop-backup/
+/*.local.slnx
+/Build.local.props
+__pycache__/
+*.pyc
+/.work/
+/release/
