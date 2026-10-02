@@ -7,6 +7,13 @@
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="0Harmony">
+            <HintPath>../../dependencies/melonloader/net6/0Harmony.dll</HintPath>
+        </Reference>
+        <Compile
+            Include="../../src/OtogiMod/Patches/TranslationPatch.cs"
+            Link="Production/TranslationPatch.cs"
+        />
         <Compile
             Include="../../src/OtogiMod/Services/Translation.cs"
             Link="Production/Translation.cs"

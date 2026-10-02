@@ -9,21 +9,27 @@ internal static class TranslationPatch
 {
     [HarmonyPrefix]
     [HarmonyPatch(
-        typeof(HTTPRequest),
-        MethodType.Constructor,
-        new[]
-        {
-            typeof(Il2CppSystem.Uri),
-            typeof(HTTPMethods),
-            typeof(bool),
-            typeof(bool),
-            typeof(OnRequestFinishedDelegate),
-        }
+        typeof(HTTPManager),
+        nameof(HTTPManager.SendRequest),
+        new[] { typeof(HTTPRequest) }
     )]
-    private static void RewriteFont(ref Il2CppSystem.Uri __0)
+    private static void RewriteFont(HTTPRequest request)
     {
-        if ((__0?.ToString() ?? string.Empty).EndsWith("Assets/font", StringComparison.Ordinal))
-            __0 = new Il2CppSystem.Uri(Services.Translation.FontUrl);
+        // Patching an allocating interop constructor can leave the native request uninitialized.
+        try
+        {
+            if (
+                (request?.Uri?.ToString() ?? string.Empty).EndsWith(
+                    "Assets/font",
+                    StringComparison.Ordinal
+                )
+            )
+                request!.Uri = new Il2CppSystem.Uri(Services.Translation.FontUrl);
+        }
+        catch (Exception exception)
+        {
+            Logger.Warn($"Font redirect skipped: {exception.Message}");
+        }
     }
 
     [HarmonyPostfix]

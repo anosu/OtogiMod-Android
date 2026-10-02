@@ -36,3 +36,6 @@ python shared/ModEngineering/scripts/project.py package
 
 配置文件为 `UserData/OtogiMod.cfg`，首次启动时生成。翻译字体和 CDN 地址位于
 `OtogiMod.Translation`，仅使用 `CDN`，不读取 `CDN_HK`。
+
+字体 URL 在 `HTTPManager.SendRequest(HTTPRequest)` 前改写，不补丁生成的
+`HTTPRequest` 构造函数：其包装代码会分配新对象，复制执行可能使游戏原请求未初始化。
