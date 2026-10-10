@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <Import Project="$(ModRepositoryRoot)shared/ModEngineering/build/Android.props" />
     <PropertyGroup>
-        <Version>1.0.1</Version>
+        <Version>1.0.2</Version>
         <Nullable>enable</Nullable>
     </PropertyGroup>
     <Import Project="$(ModRepositoryRoot)shared/ModEngineering/build/SharedDependencies.props" />
